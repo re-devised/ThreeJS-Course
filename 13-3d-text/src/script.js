@@ -27,13 +27,13 @@ const scene = new THREE.Scene()
  * Textures
  */
 const textureLoader = new THREE.TextureLoader()
-const matcapTexture = textureLoader.load('/textures/matcaps/3.png')
+const matcapTexture = textureLoader.load('textures/matcaps/3.png')
 
 
 // Fonts
 
 const fontLoader = new FontLoader()
-fontLoader.load('/fonts/helvetiker_regular.typeface.json', font => {
+fontLoader.load('fonts/helvetiker_regular.typeface.json', font => {
     const textGeometry = new TextGeometry('RE:DEVISED', {
         font: font,
         size: 0.5,
