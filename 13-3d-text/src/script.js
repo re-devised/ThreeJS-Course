@@ -27,7 +27,7 @@ const scene = new THREE.Scene()
  * Textures
  */
 const textureLoader = new THREE.TextureLoader()
-const matcapTexture = textureLoader.load('/textures/matcaps/8.png')
+const matcapTexture = textureLoader.load('/textures/matcaps/3.png')
 
 
 // Fonts
@@ -38,12 +38,12 @@ fontLoader.load('/fonts/helvetiker_regular.typeface.json', font => {
         font: font,
         size: 0.5,
         height: 0.2,
-        curveSegments: 5,
+        curveSegments: 12,
         bevelEnabled: true,
         bevelThickness: 0.03,
         bevelSize: 0.02,
         bevelOffset: 0,
-        bevelSegments: 4
+        bevelSegments: 5
     })
     // textGeometry.computeBoundingBox()
     // textGeometry.translate(
@@ -59,12 +59,16 @@ fontLoader.load('/fonts/helvetiker_regular.typeface.json', font => {
 
 
     const donutGeometry = new THREE.TorusGeometry(0.3, 0.2, 20, 45)
-    for(let i = 0; i < 300; i++){
+    for(let i = 0; i < 500; i++){
         const donut = new THREE.Mesh(donutGeometry, material)
 
-        donut.position.x = (Math.random() - 0.5) * 10
-        donut.position.y = (Math.random() - 0.5) * 10
-        donut.position.z = (Math.random() - 0.5) * 10
+        const paddingFromCenter = 0.5
+        const posX = (Math.random() - 0.5) * 15 
+        const posY = (Math.random() - 0.5) * 15
+        const posZ = (Math.random() - 0.5) * 15
+        donut.position.x = posX > 0 ? posX+paddingFromCenter : posX-paddingFromCenter
+        donut.position.y = posY > 0 ? posY+paddingFromCenter : posY-paddingFromCenter
+        donut.position.z = posZ > 0 ? posZ+paddingFromCenter : posZ-paddingFromCenter
 
         donut.rotation.x = Math.random() * Math.PI
         donut.rotation.y = Math.random() * Math.PI
